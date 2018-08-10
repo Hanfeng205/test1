@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deloitte.cmats5.mapper.MerchInfoMapper">
+    <!--根据商品ID查询单个商品-->
+    <select id="getMerchById" parameterType="java.lang.Long" resultType="com.deloitte.cmats5.entity.MerchInfo">
+        select * from merch_info where merch_id=#{value}
+    </select>
+
+    <!--查询所有商品信息-->
+    <select id="getMerch" resultType="com.deloitte.cmats5.entity.MerchInfo">
+        select * from merch_info
+    </select>
+
+    <!--添加商品-->
+    <insert id="addMerch" parameterType="com.deloitte.cmats5.entity.MerchInfo">
+        insert into merch_info value(null,#{merch_name},#{merch_price},#{merch_num})
+    </insert>
+
+    <!--更新商品-->
+    <update id="updateMerch" parameterType="com.deloitte.cmats5.entity.MerchInfo">
+        UPDATE merch_info SET  merch_price = #{merch_price} WHERE merch_id = #{merch_id}
+    </update>
+
+    <!--删除商品-->
+    <delete id="deleteMerch" parameterType="java.lang.Long">
+        DELETE FROM merch_info WHERE merch_id = #{VALUE}
+    </delete>
+
+    <!--更新商品数量-->
+    <update id="updateMerchNum" parameterType="com.deloitte.cmats5.entity.MerchInfo">
+        UPDATE merch_info SET  merch_num= #{merch_num} WHERE merch_id = #{merch_id}
+    </update>
+
+
+</mapper>
